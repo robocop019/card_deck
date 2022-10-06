@@ -5,10 +5,34 @@
 # 5. CHALLENGE: Change the program to give the user the choice at the end of the game to retry the cards they got wrong.
 # 6. CHALLENGE: Change the interface with better prompts, ASCII art, etc. Be as creative as you'd like!
 
-class Card
+class Deck
+  def initialize(input)
+    @deck = input.each {|key, value| Card.new(key, value)}
+  end
+
+  def remaining_cards
+    @deck.length
+  end
+
+  def draw_card
+    questions = @deck.keys
+    p questions
+  end
 end
 
-class Deck
+class Card
+  def initialize(question, answer)
+    @question = question
+    @answer = answer
+  end
+
+  def question
+    
+  end
+
+  def answer
+    
+  end
 end
 
 trivia_data = {
@@ -17,15 +41,22 @@ trivia_data = {
   "Tug of war was once an Olympic event. True or false?" => "True"
 }
 
+
 deck = Deck.new(trivia_data) # deck is an instance of the Deck class
 
-while deck.remaining_cards > 0
-  card = deck.draw_card # card is an instance of the Card class
-  puts card.question
-  user_answer = gets.chomp
-  if user_answer.downcase == card.answer.downcase
-    puts "Correct!"
-  else
-    puts "Incorrect!"
-  end
-end
+p deck
+
+deck.remaining_cards
+
+deck.draw_card
+
+# while deck.remaining_cards > 0
+#   card = deck.draw_card # card is an instance of the Card class
+#   puts card.question
+#   user_answer = gets.chomp
+#   if user_answer.downcase == card.answer.downcase
+#     puts "Correct!"
+#   else
+#     puts "Incorrect!"
+#   end
+# end
